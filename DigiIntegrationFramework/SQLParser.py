@@ -78,3 +78,14 @@ def generateMeteDataFromAQuery(iQuery):
     #     dependentColumnCount+=1
     #     print("\tDependent Column",dependentColumnCount,"Of",table,"Table :",column)
 
+def generateMeteDataFromAQueryFile(fileName):
+    with open(fileName, 'r') as dosya:
+        query = dosya.read()
+    generateMeteDataFromAQuery(query)
+
+def generateMeteDataFromAQueryFileDirectory(directoryName):
+    import os
+    for fileName in os.listdir(directoryName):
+    # Tam dosya yolu
+        fqn = os.path.join(directoryName, fileName)
+        generateMeteDataFromAQueryFile(fqn)
