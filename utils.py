@@ -1,11 +1,14 @@
 import pandas as pd
 from datetime import datetime, timedelta
-import constants as cons
 import requests
+import os
+
 
 
 def df2Excel(df,directory,excelFileName,addTimeStampToFileName):
-    if isinstance(addTimeStampToFileName, bool):
+    os.makedirs(directory, exist_ok=True)  
+
+    if not isinstance(addTimeStampToFileName, bool):
         print(addTimeStampToFileName,"  veri tipi boolean olmadigi dataframe excele donusturulemedi, bu degeri true veya false yapmalisiniz")
         return
     now=datetime.now()
